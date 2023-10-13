@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cabinet Jules Verne Nantes</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+   <header>
+        <div class="logo">
+            <img class="symbole"src="logo.png" alt="logo kiné">
+        </div>
+        <h1> Masseur-kinésithérapeute </h1>
+        <button class="log" type="button"><a href="Login.html">Login</a></button>
+        <nav class="navbar">
+
+             <ul class="liste">
+                <li class="home"><a href="public/Cabinet.html" class="color"><strong>Cabinet</strong></a></li>
+                <li class="marg"><a href="public/Prendre_RDV.html"><strong>Prendre RDV</strong></a></li>
+                <li class="marg"><a href="public/Acces.html"><strong>Accès</strong></a></li>
+            </ul>
+            
+        </nav>
+    </header>
+    <main>
+    <form method="post">
+        <label for="title">Mme ou MR</label>
+        <select id="title" name="title" type="text" />
+        <option value=""> --- </option>
+        <option value="Madame">Madame</option>
+        <option value="Monsieur">Monsieur</option>
+        </select>
+        <label for="name">Nom</label>
+        <input id="name" name="name" type="text" />
+        <label for="prenom">Prenom</label>
+        <input id="prenom" name="prenom" type="text"></input>
+        <label for="praticen">Praticiens</label>
+        <select id="praticien" name="praticien" type="text" />
+        <option value=""> --- </option>
+        <option value="kine1">Jean-Paul Gautier</option>
+        <option value="kine2">Christien Labotomie</option>
+        <option value="kine3">Julie Felan</option>
+        <option value="kine4r">Joseph De Boudoir</option>
+        </select>
+        <label for="rdv"> Veuillez choisir une date et l'heure :</label >
+        <input id="rdv"  type="datetime-local"   name="rdv" />
+        <button type="submit">Envoyer</button>
+      </form>
+      </main>
+   <footer>
+<ul class="foot">Horaires:
+    <li>Lundi:       8:30-19.00</li>
+    <li>Mardi:       8:30-19.00</li>
+    <li>Mercredi:  8:30-19.00</li>
+    <li>Jeudi:        8:30-19.00</li>
+    <li>Vendredi:  8:30-19.00</li>
+    
+</ul>
+<ul class="foot">Praticiens:
+    <li>Jean-Paul Gautier</li>
+    <li>Christien Labotomie</li>
+    <li>Julie Felan</li>
+    <li>Joseoh De Boudoir</li>
+</ul>
+<ul class="foot">Adresse:
+    <li>25 Bd Jules Verne</li>
+    <li>44300 Nantes</li>
+</ul>
+    </footer>
+</body>
+</html>

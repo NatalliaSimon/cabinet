@@ -1,0 +1,34 @@
+<%- include('header.ejs') %>
+
+<main>
+    <div class="profil">
+      
+        <a href="logout">Logout</a>
+        <a href="modif">Modifier mon profil</a>
+        <a href="delete">Supprimer mon profil</a>
+    </div>
+    
+     <% if (isLogged) {%>
+        <p>  Données du praticien:</p>
+         <ul class ="list">
+            <li>
+                <ul>
+                <li>Nom:<%= praticien.nom %></li>
+                 <li>Prenom:<%= praticien.prenom %></li>
+                
+                </ul>
+            </li>
+            <li> <p> List de rendez-vous:</p>
+            <ul>
+           <% for(const tab of rdv) { %> 
+    <li>Date et l'heure de RDV <%= tab.dateTime %></li>
+    <li>Patient <%= tab.nom %> <%= tab.prenom %></li>
+    <li>Tel: <%= tab.tel %></li>
+</ul>
+</li>
+<% } %>
+          </ul>
+       <% } %>
+</main>
+
+<%- include('footer.ejs') %> 

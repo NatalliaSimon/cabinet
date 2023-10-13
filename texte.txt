@@ -1,0 +1,39 @@
+curl --location 'http://natalliasimon.ide.3wa.io:9001/users' \
+--header 'Content-Type: application/json' \
+--data '{
+    "login": "bob",
+    "mdp": "glubibulga"
+}'
+
+
+curl --location --request PUT 'http://natalliasimon.ide.3wa.io:9001/users/4c3ea5a1-0b83-45c1-8031-75265f946208' \
+--header 'Content-Type: application/json' \
+--data '{
+    "login": "bobo@hot.fr"
+}'
+
+curl --location --request DELETE 'http://natalliasimon.ide.3wa.io:9001/users/1403bad5-d31f-4292-b87f-341f1861295b' \
+--header 'Content-Type: application/json' \
+--data '{
+    "id": "1403bad5-d31f-4292-b87f-341f1861295b"
+}'
+
+curl --location --request GET 'http://natalliasimon.ide.3wa.io:9001/users/7bfe552b-7277-4bf0-b1e6-b56b2b830200' \
+--header 'Content-Type: application/json' \
+--data '{
+    "id": "7bfe552b-7277-4bf0-b1e6-b56b2b830200"
+}'
+
+curl --location --request POST 'http://natalliasimon.ide.3wa.io:9001/login' \
+--header 'Content-Type: application/json' \
+--data '{
+    "login": "tutu@bob.fr",
+    "mdp":"toto"
+}'
+curl --location --request GET 'http://natalliasimon.ide.3wa.io:9001/logout' \
+--header 'Content-Type: application/json' \
+--data '{
+    "login": "tutu@bob.fr",
+    "mdp":"toto"
+}'
+
