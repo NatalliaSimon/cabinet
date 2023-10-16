@@ -9,7 +9,7 @@ export default (req, res) => {
         login: xss(req.body.login),
         mdp: req.body.mdp
     };
-console.log(userLog)
+//console.log(userLog)
 
         database('SELECT * FROM User WHERE login=? ', [userLog.login], (error, results) => {
             if (error) {
@@ -17,8 +17,8 @@ console.log(userLog)
                 return res.status(500).send('Erreur lors de l\'exécution de la requête.');
             }
             
-            console.log(results)
-            console.log(results[0])
+           // console.log(results)
+          //  console.log(results[0])
 
             if (results.length === 0) {
                 
@@ -39,7 +39,7 @@ console.log(userLog)
 
                 req.session.isLogged = true;
                 req.session.idUser=results[0].id// stocage de id de la session
-                
+                  
              if (results[0].role === 'admin') 
                 {
                    

@@ -1,15 +1,10 @@
 import express from "express";
-//import createUser from './controllers/createUser.js';
-//import list from './controllers/list.js';
-//import update from './controllers/update.js';
-//import Delete from './controllers/delete.js';
-//import user from './controllers/user.js';
+
 
 import cabinet from './controllers/cabinet.js';
 import acces from './controllers/acces.js';
 import login from './controllers/login.js';
-//import loginGet from './controllers/loginGet.js';
-import Get from './controllers/get.js';
+import loginget from './controllers/loginget.js';
 import newUser from './controllers/newUser.js';
 import newUserGet from './controllers/newUserGet.js';
 import rdv from './controllers/rdv.js';
@@ -19,8 +14,8 @@ import Delete from './controllers/delete.js';
 import modif from './controllers/modif.js';
 import modifGet from './controllers/modifGet.js';
 import planning from './controllers/planning.js';
-
-
+import getAdmin from './controllers/admin/getAdmin.js';
+import modifAdmin from './controllers/admin/modifAdmin.js';
 
 
 
@@ -32,9 +27,9 @@ const checkAuthentication = (req, res, next) => {
         res.redirect('/login');
         return;
     }
-    console.log('ok')
+    
     next();
-}
+};
 
 router.use((req, res, next) => {
     res.locals.isLogged = req.session.isLogged;
@@ -49,7 +44,7 @@ router.use((req, res, next) => {
  
 router.get('/',cabinet);
 router.get('/acces',acces);
-router.get('/login',Get);
+router.get('/login',loginget);
 router.post('/login', login);
 router.get('/logout',logout); 
 router.get('/delete',checkAuthentication, Delete); 
@@ -60,5 +55,12 @@ router.post('/rdv',checkAuthentication,rdv);
 router.get('/modif',modifGet);
 router.post('/modif',checkAuthentication,modif);
 router.get('/planning',planning);
+router.get('/admin/modifAdmin',getAdmin);
+router.post('/admin/modifAdmin',checkAuthentication,modifAdmin);
+
+
+
+
+
 
 export default router;
