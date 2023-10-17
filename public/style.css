@@ -1,26 +1,4 @@
-/*.overlay-image {
-    position: relative;
-    display: inline-block;
-}
 
-.overlay-image .hover-image {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.25s ease-in-out;
-    background-color: rgba(76, 67, 67, .9);
-    color: white;
-    padding: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-}
-*/
 
 /*********************************************************************/
 
@@ -80,15 +58,78 @@ footer {
 
 
 
+a {
+    text-decoration: none;
+    color: black;
+}
+img {
+    width: 100%;
+    height: auto;
+}
 
+.overlay-image {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+.br {
+    font-size: 30px;
+    padding: 3%;
+    border: 2px solid white;
+}
 
+.overlay-image .hover-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    background-color: rgba(255,160,80,0.4);
+    color: white;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
 
+section {
+    display:flex;
+    flex-direction:row;
+}
+article {
+    
+    width:50%;
+}
 
+strong {
+    width: 100%;
+    background-color: #ebe3db;
+    font-size: 18px;
+    padding: 4px;
+    display:flex;
+    justify-content:space-around;
+}
+.planning {
+    width: 100%;
+    background-color: #ebe3db;
+    font-size: 16px;
+    padding: 4px;
+    display:flex;
+    justify-content:space-around;
+    margin:2px;
+}
+.planning:hover {
+    background-color:white;
+}
 
-
-
-
-
+.title{
+    color:#b80025;
+}
 
 /*********************************************************************/
 
@@ -112,4 +153,9 @@ form {
     display:flex;
     flex-direction:column;
     justify-content:center;
+}
+.list-rdv {
+    display:flex;
+    flex-direction:row;
+    margin:5px;
 }

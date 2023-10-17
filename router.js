@@ -16,7 +16,11 @@ import modifGet from './controllers/modifGet.js';
 import planning from './controllers/planning.js';
 import getAdmin from './controllers/admin/getAdmin.js';
 import modifAdmin from './controllers/admin/modifAdmin.js';
-
+import newAdminGet from './controllers/admin/newAdminGet.js';
+import newAdmin from './controllers/admin/newAdmin.js';
+import rdvAdmin from './controllers/admin/rdvAdmin.js';
+import rdvAdminGet from './controllers/admin/rdvAdminGet.js';
+import deleteRdv from './controllers/admin/deleteRdv.js';
 
 
 const router = express.Router();
@@ -57,6 +61,11 @@ router.post('/modif',checkAuthentication,modif);
 router.get('/planning',planning);
 router.get('/admin/modifAdmin',getAdmin);
 router.post('/admin/modifAdmin',checkAuthentication,modifAdmin);
+router.get('/admin/newAdmin',newAdminGet);
+router.post('/admin/newAdmin',newAdmin);
+router.get('/admin/rdvAdmin',rdvAdminGet);
+router.post('/admin/rdvAdmin',rdvAdmin);
+router.get('/deleteRdv/:idRDV',checkAuthentication, deleteRdv); 
 
 
 

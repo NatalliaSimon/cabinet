@@ -1,1 +1,1 @@
-export default (req, res) => { res.render("newUser.ejs");};
+export default (req, res) => { res.render("admin/newAdmin.ejs");};

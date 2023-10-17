@@ -1,20 +1,43 @@
 
-<%- include('header.ejs') %>
+<%- include('../header.ejs') %>
 
 <main>
+    <% if (isLogged) {%>
+        <h3> Liste de rendez-vous:</h3>
+         <ul>
+        
+            <li class ="list-rdv"> 
+            <% for(const tab of rdvs) { %>
+                <ul> 
+                    <li>Date et l'heure de RDV <%= tab.dateTime %></li>
+                    <li>Patient <%= tab.nom %> <%= tab.prenom %></li>
+                    <li>Praticiens <%= tab.NomPraticien %> <%= tab.PrenomPraticien %></li>
+                    <li>Tel: <%= tab.tel %></li>
+                    
+                    <li><a href="/deleteRdv/<%= tab.id %>" class="planning">Supprimer le RDV</a></li>
+                    
+                </ul>
+                <% } %>
+            </li>
+                
+          </ul>
+       <% } %>
+       
     <% if (!isLogged) {%>
     <p>Merci de vous connecter ou de créer votre profil pour la prise de RENDEZ−VOUS</p>
     <% } %>
       <% if(locals.message) { %><p> <%=message  %></p>
     <% } %>
+    
     <% if (isLogged) {%>
+    <h3>Fixer un nouveau rendez-vous</h3>
     <form method="post">
         <label for="title">Mme ou MR</label>
         <select id="title" name="title" type="text" />
         <option value=""> --- </option>
         <option value="Madame">Madame</option>
         <option value="Monsieur">Monsieur</option>
-        </select>
+        </select> 
         <label for="nom">Nom</label>
         <input id="nom" name="nom" type="text" />
         <label for="prenom">Prenom</label>
@@ -24,10 +47,9 @@
         <label for="idPraticen">Praticiens</label>
         <select id="idPraticien" name="idPraticien" type="text" />
         <option value=""> --- </option>
-        <option value="171ddf55-8c91-4dc3-a28e-1f22f85dec1b">Jean-Paul Gautier</option>
-        <option value="1f279ffd-bfta-47f8-95ba-37d9b1b0804a">Christien Labotomie</option>
-        <option value="171ddf55-8c91-4dc3-a28e-1f22f85mai1b">Julie Felan</option>
-        <option value="kine4r">Joseph De Boudoir</option>
+        <% for(const praticien of praticiens) { %>
+        <option value="<%= praticien.id %>"><%= praticien.Nom %> <%= praticien.Prenom %></option>
+        <% } %>
         </select>
         <label for="dateTime"> Veuillez choisir une date et l'heure :</label >
         <input id="dateTime"  type="datetime-local"   name="dateTime" />
@@ -36,4 +58,4 @@
       <% } %>
       </main>
       
-<%- include('footer.ejs') %>      
+<%- include('../footer.ejs') %>      

@@ -24,10 +24,9 @@
         <label for="idPraticen">Praticiens</label>
         <select id="idPraticien" name="idPraticien" type="text" />
         <option value=""> --- </option>
-        <option value="171ddf55-8c91-4dc3-a28e-1f22f85dec1b">Jean-Paul Gautier</option>
-        <option value="1f279ffd-bfta-47f8-95ba-37d9b1b0804a">Christien Labotomie</option>
-        <option value="171ddf55-8c91-4dc3-a28e-1f22f85mai1b">Julie Felan</option>
-        <option value="55e64c8e-515f-44ce-9ee7-23e11305tot2">Joseph De Boudoir</option>
+        <% for(const praticien of Praticien) { %>
+        <option value="<%= praticien.id %>"><%= praticien.Nom %> <%= praticien.Prenom %></option>
+        <% } %>
         </select>
         <label for="dateTime"> Veuillez choisir une date et l'heure :</label >
         <input id="dateTime"  type="datetime-local"   name="dateTime" />

@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
 import bcrypt from 'bcrypt';
-import database from '../database.js';
+import database from '../../database.js';
 import xss from 'xss';
 
 export default (req, res) => {
@@ -14,30 +14,29 @@ export default (req, res) => {
     
     const newId = v4();
 
-    const newUser = {
+    const newAdmin = {
         
         nom: xss(req.body.nom),
         prenom: xss(req.body.prenom),
-        tel: xss(req.body.tel),
         login: xss(req.body.login),
         mdp: req.body.mdp,
-        role:"User"
+        role:"admin"
     };
-    if (!verifEmail(newUser.login)) {
+    if (!verifEmail(newAdmin.login)) {
         
     return res.status(400).send('L\'e-mail n\'est pas dans un format valide.');
 }
 
-    bcrypt.hash(newUser.mdp, 10, (error, hash) => {
+    bcrypt.hash(newAdmin.mdp, 10, (error, hash) => {
         if (error) {
             console.error('Erreur lors du hachage du mot de passe', error);
             return res.status(500).send({ error: 'Erreur serveur lors du hachage du mot de passe.' });
         }
 
-        // Insérer dans la table newUser
+        // Insérer dans la table User
         database(
             'INSERT INTO User (id, login, mdp,role) VALUES (?, ?, ?, ?)',
-            [newId, newUser.login, hash, newUser.role],
+            [newId, newAdmin.login, hash, newAdmin.role],
             (error, result) => {
                 if (error) {
                     console.error(error);
@@ -46,10 +45,10 @@ export default (req, res) => {
                     });
                     
                 }
-                // Insérer dans la table Patient
+                // Insérer dans la table Praticien
                 database(
-                    'INSERT INTO Patient (id, nom, prenom, tel, idUser) VALUES (?, ?, ?, ?, ?)',
-                    [v4(), newUser.nom, newUser.prenom, newUser.tel, newId,],
+                    'INSERT INTO Praticien (id, Nom, Prenom, idUser) VALUES (?, ?, ?, ?)',
+                    [v4(), newAdmin.nom, newAdmin.prenom, newId,],
                     (error, result) => {
                         if (error) {
                             console.error(error);
@@ -58,7 +57,7 @@ export default (req, res) => {
                             });
                         }
 
-                         res.redirect("/login",200,{});
+                         res.redirect("/login");
                     }
                 );
             }
