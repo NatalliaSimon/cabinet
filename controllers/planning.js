@@ -7,24 +7,15 @@ export default (req, res) => {
     console.log(idUser);
 
     if (!idUser) {
-        res.render('login.ejs');
+        res.redirect('/login');
         return;
     }
 
     database(
-        
-        `SELECT RDV.nom, RDV.prenom,Patient.tel, RDV.dateTime, Praticien.Nom as praticienNom, Praticien.Prenom as praticienPrenom
-        FROM RDV
-        INNER JOIN Patient ON Patient.id = RDV.idPatient
-        INNER JOIN Praticien ON RDV.idPraticien = Praticien.id
-        INNER JOIN User ON User.id = Praticien.idUser
-        WHERE Praticien.idUser = ?;`,
 
-        [idUser],
+        'SELECT * FROM Praticien WHERE idUser=?', [idUser],
 
-        (error, results) => {
-
-
+        (error, praticien) => {
 
             if (error) {
                 console.error(`Erreur lors de l'exécution de la requête ${error}`);
@@ -32,21 +23,34 @@ export default (req, res) => {
                 return;
             }
 
-            if (results.length === 0) {
-                res.status(404).send(`Aucune donnée trouvée pour l'utilisateur avec l'ID ${idUser}.`);
-                return;
-            }
+            database(
 
-            const praticien = {
-                nom: results[0].praticienNom,
-                prenom: results[0].praticienPrenom,
-                
-            }
-            
-            const rdv = results;
-            console.log(rdv)
-           
+                `SELECT RDV.nom, RDV.prenom,Patient.tel, RDV.dateTime, Praticien.Nom as praticienNom, Praticien.Prenom as praticienPrenom
+        FROM RDV
+        INNER JOIN Patient ON Patient.id = RDV.idPatient
+        INNER JOIN Praticien ON RDV.idPraticien = Praticien.id
+        INNER JOIN User ON User.id = Praticien.idUser
+        WHERE Praticien.idUser = ?;`,
 
-            res.render('planning.ejs', { rdv, praticien });
-        });
+                [idUser],
+
+                (error, results) => {
+
+
+
+                    if (error) {
+                        console.error(`Erreur lors de l'exécution de la requête ${error}`);
+                        res.status(500).send('Erreur serveur');
+                        return;
+                    }
+
+                    const rdv = results;
+                    
+
+
+
+                    res.render('planning.ejs', { rdv, praticien: praticien[0] });
+                });
+        })
+
 };

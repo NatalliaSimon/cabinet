@@ -2,35 +2,41 @@
 
 <main>
     <div class="profil">
-      
         <a href="logout" class="planning">Logout</a>
-        <a href="admin/modifAdmin" class="planning">Modifier mon profil Admin</a>
-        <a href="admin/newAdmin" class="planning">Crée profil Admin</a>
-        <a href="admin/rdvAdmin" class="planning">Modifier les RDV</a>
-        <a href="delete" class="planning" >Supprimer mon profil Admin</a>
+    <a href="admin/modifAdmin" class="planning">Modifier mon profil Admin</a>
+    <a href="admin/newAdmin" class="planning">Créer profil Admin</a>
+    <a href="admin/rdvAdmin" class="planning">Modifier les RDV</a>
+    <a href="delete" class="planning">Supprimer mon profil Admin</a>
     </div>
-    
-     <% if (isLogged) {%>
-        <p>  Données du praticien:</p>
-         <ul class ="list">
-            <li>
-                <ul>
-                <li>Nom:<%= praticien.nom %></li>
-                 <li>Prenom:<%= praticien.prenom %></li>
-                
-                </ul>
-            </li>
-            <li> <p> List de rendez-vous:</p>
-            <ul>
-           <% for(const tab of rdv) { %> 
-    <li>Date et l'heure de RDV <%= tab.dateTime %></li>
-    <li>Patient <%= tab.nom %> <%= tab.prenom %></li>
-    <li>Tel: <%= tab.tel %></li>
-</ul>
-</li>
-<% } %>
-          </ul>
-       <% } %>
+        <% if (isLogged && praticien) { %>
+            <p>Données du praticien :</p>
+            <ul class="list">
+                <li>
+                    <ul>
+                        <li>Nom : <%= praticien.Nom %></li>
+                        <li>Prenom : <%= praticien.Prenom %></li>
+                    </ul>
+                </li>
+                <li>
+                    <p>Liste des rendez-vous :</p>
+                    <% if (rdv.length > 0) { %>
+                        <ul>
+                            <% for (const tab of rdv) { %>
+                                <li>Date et heure du RDV : <%= tab.dateTime %></li>
+                                <li>Patient : <%= tab.nom %> <%= tab.prenom %></li>
+                                <li>Tel : <%= tab.tel %></li>
+                            <% } %>
+                        </ul>
+                    <% } else { %>
+                        <p>Aucun rendez-vous disponible.</p>
+                    <% } %>
+                </li>
+            </ul>
+        <% } else if (isLogged && !praticien) { %>
+            <p>Le praticien est connecté, mais n'a pas de rendez-vous.</p>
+        <% } else { %>
+            <a href="/admin/rdvAdmin">Afficher les rendez-vous</a>
+        <% } %>
+        
 </main>
-
 <%- include('footer.ejs') %> 

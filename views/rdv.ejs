@@ -5,9 +5,10 @@
     <% if (!isLogged) {%>
     <p>Merci de vous connecter ou de créer votre profil pour la prise de RENDEZ−VOUS</p>
     <% } %>
-      <% if(locals.message) { %><p> <%=message  %></p>
+      <% if(!locals.message) { %><p> <%=message  %></p>
     <% } %>
     <% if (isLogged) {%>
+    
     <form method="post">
         <label for="title">Mme ou MR</label>
         <select id="title" name="title" type="text" />
@@ -22,10 +23,13 @@
         <label for="tel">Telephone</label>
         <input id="tel" name="tel" type="phone"></input>
         <label for="idPraticen">Praticiens</label>
-        <select id="idPraticien" name="idPraticien" type="text" />
+         <select id="idPraticien" name="idPraticien" type="text" />
         <option value=""> --- </option>
-        <% for(const praticien of Praticien) { %>
-        <option value="<%= praticien.id %>"><%= praticien.Nom %> <%= praticien.Prenom %></option>
+        
+        <% for(const medcin of praticiens) { %>
+        
+        <option value="<%= medcin.id %>"> <%= medcin.Nom %> <%= medcin.Prenom %></option>
+        
         <% } %>
         </select>
         <label for="dateTime"> Veuillez choisir une date et l'heure :</label >

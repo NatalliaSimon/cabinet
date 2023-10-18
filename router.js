@@ -1,6 +1,4 @@
 import express from "express";
-
-
 import cabinet from './controllers/cabinet.js';
 import acces from './controllers/acces.js';
 import login from './controllers/login.js';

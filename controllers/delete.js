@@ -13,7 +13,8 @@ export default (req, res) => {
 
 database(
 
-    'DELETE FROM User WHERE idUser = ?', [idUser],
+    'DELETE FROM User WHERE id = ?',
+    [idUser],
     (error, result) => {
 
       if (error) {

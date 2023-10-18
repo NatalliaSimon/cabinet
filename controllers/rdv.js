@@ -48,9 +48,7 @@ export default (req, res) => {
                 }
 
                 console.log(result);
-                res.render('rdv.ejs', {
-                    message: 'Votre demande est enregistrée',
-                });
+                res.redirect('/rdv' );
             }
         );
     });
