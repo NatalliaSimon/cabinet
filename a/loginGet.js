@@ -151,3 +151,22 @@ export default (req, res) => {
       </main>
       
 <%- include('footer.ejs') %>      */
+
+/* <header>
+        <div class="logo">
+            <img class="symbole" src="/logo.png" alt="logo kiné">
+        </div>
+        <h1> Masseurs-kinésithérapeutes </h1>
+       
+        <nav class="navbar">
+
+             <ul class="liste">
+                <li class="home"><a href="/" class="color"><strong>Cabinet</strong></a></li>
+                <li class="marg"><a href="/rdv"><strong>Prendre RDV</strong></a></li>
+                <li class="marg"><a href="/acces"><strong>Accès</strong></a></li>
+                <li class="marg"><a href="/login"><strong>Mon Profil</strong></a></li>
+            </ul>
+            
+        </nav>
+    </header>
+    */

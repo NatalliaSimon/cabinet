@@ -1,14 +1,14 @@
-<%- include('../header.ejs') %>  
- <main>
-     <p>Vous pouvez créer votre profil en remplissant tous les champs du formulaire</p>
-     
+<%- include('../header.ejs') %>
+    <main>
+        <p>Vous pouvez créer votre profil en remplissant tous les champs du formulaire</p>
+
         <form method="post">
-          
-        <label for="nom">Nom</label>
-        <input id="nom" name="nom" type="text" required />
-        <label for="prenom">Prenom</label>
-        <input id="prenom" name="prenom" type="text" required></input>
-        
+
+            <label for="nom">Nom</label>
+            <input id="nom" name="nom" type="text" required />
+            <label for="prenom">Prenom</label>
+            <input id="prenom" name="prenom" type="text" required></input>
+
             <label for="login">Votre email</label>
             <input type="email" name="login" id="email" required />
             <label for="mdp">Votre mot de passe</label>
@@ -16,4 +16,4 @@
             <input type="submit" value="Crée le profil" />
         </form>
     </main>
-    <%- include('../footer.ejs') %>  
+    <%- include('../footer.ejs') %>

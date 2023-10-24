@@ -1,21 +1,21 @@
-<%- include('header.ejs') %>  
- <main>
-     <% if (isLogged) {%>
-     <p>Vous pouver modifiez votre profil en remplissant tous les champs du formulaire</p>
-        <form method="post">
-          
-            <label for="nom">Nom</label>
-            <input id="nom" name="nom" type="text" value="<%=patient.nom %>" />
-            <label for="prenom">Prenom</label>
-            <input id="prenom" name="prenom" type="text" value="<%= patient.prenom %>" />
-            <label for="tel">Telephone</label>
-            <input id="tel" name="tel" type="phone" value="<%= patient.tel %>"/>
-            <label for="login">Votre email</label>
-            <input type="email" name="login" id="login" value="<%= patient.login %>" />
-            <label for="mdp">Votre mot de passe</label>
-            <input type="password" name="mdp" id="mdp" />
-            <input type="submit" value="Modifier le profil" />
-        </form>
-         <% } %>
+<%- include('header.ejs') %>
+    <main>
+        <% if (isLogged) {%>
+            <p>Vous pouver modifiez votre profil en remplissant tous les champs du formulaire</p>
+            <form method="post">
+
+                <label for="nom">Nom</label>
+                <input id="nom" name="nom" type="text" value="<%=patient.nom %>" />
+                <label for="prenom">Prenom</label>
+                <input id="prenom" name="prenom" type="text" value="<%= patient.prenom %>" />
+                <label for="tel">Telephone</label>
+                <input id="tel" name="tel" type="phone" value="<%= patient.tel %>" />
+                <label for="login">Votre email</label>
+                <input type="email" name="login" id="login" value="<%= patient.login %>" />
+                <label for="mdp">Votre mot de passe</label>
+                <input type="password" name="mdp" id="mdp" />
+                <input type="submit" value="Modifier le profil" />
+            </form>
+            <% } %>
     </main>
-    <%- include('footer.ejs') %>  
+    <%- include('footer.ejs') %>

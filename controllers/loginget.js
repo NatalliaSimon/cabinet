@@ -28,7 +28,6 @@ export default (req, res) => {
             }
 
             database(
-                
                 `SELECT RDV.nom, RDV.prenom, Patient.tel, RDV.dateTime, Praticien.Nom, Praticien.Prenom, User.login, User.mdp
                 FROM RDV
                 INNER JOIN Patient ON Patient.id = RDV.idPatient

@@ -5,7 +5,7 @@ export default (req, res) => {
 
 
     database(
-        'SELECT* FROM Praticien ',
+        'SELECT * FROM Praticien ',
 
         (error, praticiens) => {
 

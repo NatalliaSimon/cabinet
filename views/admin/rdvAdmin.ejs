@@ -1,61 +1,86 @@
-
 <%- include('../header.ejs') %>
 
-<main>
-    <% if (isLogged) {%>
-        <h3> Liste de rendez-vous:</h3>
-         <ul>
-        
-            <li class ="list-rdv"> 
-            <% for(const tab of rdvs) { %>
-                <ul> 
-                    <li>Date et l'heure de RDV <%= tab.dateTime %></li>
-                    <li>Patient <%= tab.nom %> <%= tab.prenom %></li>
-                    <li>Praticiens <%= tab.NomPraticien %> <%= tab.PrenomPraticien %></li>
-                    <li>Tel: <%= tab.tel %></li>
-                    
-                    <li><a href="/deleteRdv/<%= tab.id %>" class="planning">Supprimer le RDV</a></li>
-                    
-                </ul>
-                <% } %>
-            </li>
-                
-          </ul>
-       <% } %>
-       
-    <% if (!isLogged) {%>
-    <p>Merci de vous connecter ou de créer votre profil pour la prise de RENDEZ−VOUS</p>
-    <% } %>
-      <% if(locals.message) { %><p> <%=message  %></p>
-    <% } %>
-    
-    <% if (isLogged) {%>
-    <h3>Fixer un nouveau rendez-vous</h3>
-    <form method="post">
-        <label for="title">Mme ou MR</label>
-        <select id="title" name="title" type="text" />
-        <option value=""> --- </option>
-        <option value="Madame">Madame</option>
-        <option value="Monsieur">Monsieur</option>
-        </select> 
-        <label for="nom">Nom</label>
-        <input id="nom" name="nom" type="text" />
-        <label for="prenom">Prenom</label>
-        <input id="prenom" name="prenom" type="text"></input>
-        <label for="tel">Telephone</label>
-        <input id="tel" name="tel" type="phone"></input>
-        <label for="idPraticen">Praticiens</label>
-        <select id="idPraticien" name="idPraticien" type="text" />
-        <option value=""> --- </option>
-        <% for(const praticien of praticiens) { %>
-        <option value="<%= praticien.id %>"><%= praticien.Nom %> <%= praticien.Prenom %></option>
-        <% } %>
-        </select>
-        <label for="dateTime"> Veuillez choisir une date et l'heure :</label >
-        <input id="dateTime"  type="datetime-local"   name="dateTime" />
-        <button type="submit">Envoyer</button>
-      </form>
+    <main>
+
+        <% if (isLogged) {%>
+
+            <form id="search">
+                <input type="text" id="nom" placeholder="Nom du patient">
+                <button type="submit" class="btnRdv">Rechercher</button>
+            </form>
+            <div id="search-result">
+
+            </div>
+
+            <h3> Liste de rendez-vous:</h3>
+            <ul>
+
+                <li class="list-rdv">
+                    <% for(const tab of rdvs) { %>
+                        <ul class="ulPlanning">
+                            <li class="liPlanning">Date et l'heure de RDV
+                                <%=  tab.dateTime.replace('T', ' ') %>
+                            </li>
+                            <li>Patient
+                                <%= tab.nom %>
+                                    <%= tab.prenom %>
+                            </li>
+                            <li>Praticiens
+                                <%= tab.NomPraticien %>
+                                    <%= tab.PrenomPraticien %>
+                            </li>
+                            <li>Tel:
+                                <%= tab.tel %>
+                            </li>
+
+                            <li><a href="/deleteRdv/<%= tab.id %>" class="planning">Supprimer le RDV</a></li>
+
+                        </ul>
+                        <% } %>
+                </li>
+
+            </ul>
+            <% } %>
+
+                <% if (!isLogged) {%>
+                    <p>Merci de vous connecter ou de créer votre profil pour la prise de RENDEZ−VOUS</p>
+                    <% } %>
+                        <% if(locals.message) { %>
+                            <p>
+                                <%=message  %>
+                            </p>
+                            <% } %>
+
+                                <% if (isLogged) {%>
+                                    <h3>Fixer un nouveau rendez-vous</h3>
+                                    <form method="post" class="form">
+                                        <label for="title">Mme ou MR</label>
+                                        <select id="title" name="title" type="text" required />
+                                        <option value=""> --- </option>
+                                        <option value="Madame">Madame</option>
+                                        <option value="Monsieur">Monsieur</option>
+                                        </select>
+                                        <label for="nom">Nom</label>
+                                        <input id="nom" name="nom" type="text" required />
+                                        <label for="prenom">Prenom</label>
+                                        <input id="prenom" name="prenom" type="text" required></input>
+                                        <label for="tel">Telephone</label>
+                                        <input id="tel" name="tel" type="phone" required></input>
+                                        <label for="idPraticen">Praticiens</label>
+                                        <select id="idPraticien" name="idPraticien" type="text" required/>
+                                        <option value=""> --- </option>
+                                        <% for(const praticien of praticiens) { %>
+                                            <option value="<%= praticien.id %>">
+                                                <%= praticien.Nom %>
+                                                    <%= praticien.Prenom %>
+                                            </option>
+                                            <% } %>
+                                                </select>
+                                                <label for="dateTime"> Veuillez choisir une date et l'heure :</label >
+        <input id="dateTime"  type="datetime-local"   name="dateTime" required />
+        <button class="btnRdv" type="submit">Envoyer</button>
+      </form> 
       <% } %>
       </main>
       
-<%- include('../footer.ejs') %>      
+<%- include('../footer.ejs') %>

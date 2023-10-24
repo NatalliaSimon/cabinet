@@ -19,7 +19,7 @@ import newAdmin from './controllers/admin/newAdmin.js';
 import rdvAdmin from './controllers/admin/rdvAdmin.js';
 import rdvAdminGet from './controllers/admin/rdvAdminGet.js';
 import deleteRdv from './controllers/admin/deleteRdv.js';
-
+import search from './controllers/admin/search.js';
 
 const router = express.Router();
 
@@ -64,7 +64,7 @@ router.post('/admin/newAdmin',newAdmin);
 router.get('/admin/rdvAdmin',rdvAdminGet);
 router.post('/admin/rdvAdmin',rdvAdmin);
 router.get('/deleteRdv/:idRDV',checkAuthentication, deleteRdv); 
-
+router.get('/rdvAdmin',search);
 
 
 

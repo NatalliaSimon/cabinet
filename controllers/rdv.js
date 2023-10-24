@@ -1,5 +1,7 @@
 import { v4 } from 'uuid';
 import database from '../database.js';
+import xss from 'xss';
+
 
 export default (req, res) => {
     
@@ -23,12 +25,12 @@ export default (req, res) => {
         console.log(results[0])
 
         const rdv = {
-            title: req.body.title,
-            nom: req.body.nom,
-            prenom: req.body.prenom,
-            tel: req.body.tel,
-            idPraticien: req.body.idPraticien,
-            dateTime: req.body.dateTime,
+            title: xss(req.body.title),
+            nom: xss(req.body.nom),
+            prenom: xss(req.body.prenom),
+            tel: xss(req.body.tel),
+            idPraticien: xss(req.body.idPraticien),
+            dateTime: xss(req.body.dateTime),
             idPatient: results[0].id
         };
 

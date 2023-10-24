@@ -1,0 +1,197 @@
+/**************************** Variables ****************************/
+:root {
+  --color-page-background: #FFF;
+  --color-text: rgb(37,37,38);
+  --color-border: #CCC;
+  --button-color-background: lightgoldenrodyellow;
+  --button-color-text: var(--color-text);
+  --button-color-border: var(--button-color-text);
+  --link-color: #2d89e5;
+  --link-visited-color: #b2b03a;
+  --panel-color-background: rgb(37,37,38);
+  --panel-color-text: lightgoldenrodyellow;
+  --panel-color-border: var(--button-color-border);
+  --font-family: 'Montserrat', sans-serif;
+  --font-family-code: monospace, monospace;;
+  --font-size: 1em;
+  --line-height: 2em;
+  --border-radius: 0.25em;
+  --button-border: 0.1em solid var(--button-color-border);
+  --button-border-radius: var(--border-radius);
+}
+/************************** Accessibility **************************/
+
+.dark {
+  --color-page-background: rgb(30,30,30);
+  --color-text: #FFF;
+  --color-border: #666;
+  --button-color-background: var(--panel-color-background);
+  --button-color-text: lightgoldenrodyellow;
+  --button-color-border: var(--button-color-text);
+  --link-color: #66d9ef;
+  --link-visited-color: #e6db74;
+  --panel-color-border: var(--button-color-border);
+  --button-border: 0.1em solid var(--button-color-border);
+}
+
+.dys {
+  --font-family: 'OpenDyslexic', cursive;
+  --font-family-code: 'OpenDyslexic', cursive;
+}
+
+.bigFont {
+  --font-size: 1.5rem;
+}
+
+/***************************** Globals *****************************/
+
+* {
+  box-sizing: border-box
+}
+
+::-webkit-scrollbar {
+  width: 1em;
+  height: 1em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 1em;
+  box-shadow: inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(21, 21, 21);
+  border-radius: 1em;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-page-background);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+button, input[type], label {
+  background-color: var(--color-text);
+  color: var(--color-page-background);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--button-color-background);
+  color: var(--button-color-text);
+  border: var(--button-border);
+  border-radius: var(--button-border-radius);
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:visited {
+  color: var(--link-visited-color);
+}
+/*************************************************************************/
+/*                          Boutons Accessibilité                        */
+/*************************************************************************/
+
+/**************************** Generic classes ****************************/
+.accessibility {
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  height: 1.5em;
+  width: 3em;
+  background-color: var(--color-text);
+  color: var(--color-page-background);
+  border-radius: 1em;
+  cursor: pointer;
+}
+.switch::before {
+  display: block;
+  position: absolute;
+  font-family: cursive;
+}
+
+.switch::after {
+  display: block;
+  position: absolute;
+  font-family: cursive;
+}
+
+.switch input {
+  visibility: hidden;
+}
+
+.switch .button {
+  position: absolute;
+  top: 0.1em;
+  left: 0.1em;
+  display: block;
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 50%;
+  background-color: var(--color-page-background);
+  transition: left 0.5s ease;
+}
+
+.switch input:checked + .button {
+  left: calc(3em - 0.1em - 1.3em);
+}
+
+/************************** Light / Dark Switch **************************/
+
+.light-dark-switch::before {
+  top: -0.27em;
+  left: 0.15em;
+  font-size: 1.2em;
+  content: '☼';
+}
+
+.light-dark-switch::after {
+  top: -0.25em;
+  left: 1.4em;
+  font-size: 1.3em;
+  content: '☾';
+}
+/************************** Dyslexic Switch **************************/
+
+.dys-switch::before {
+  top: -0.2em;
+  left: 0.22em;
+  font-size: 1.3em;
+  content: 'A';
+  font-family: serif;
+}
+
+.dys-switch::after {
+  top: -0.25em;
+  left: 1.35em;
+  font-size: 1.3em;
+  content: 'A';
+}
+/************************** Font size switch **************************/
+
+.big-font-switch::before {
+  top: -0.4em;
+  left: 0.4em;
+  font-size: 0.7em;
+  content: 'A-';
+}
+
+.big-font-switch::after {
+  top: -0.27em;
+  left: 1.7em;
+  font-size: 1em;
+  content: 'A+';
+}

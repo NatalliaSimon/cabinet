@@ -1,42 +1,52 @@
 <%- include('header.ejs') %>
 
-<main>
-    <div class="profil">
-        <a href="logout" class="planning">Logout</a>
-    <a href="admin/modifAdmin" class="planning">Modifier mon profil Admin</a>
-    <a href="admin/newAdmin" class="planning">Créer profil Admin</a>
-    <a href="admin/rdvAdmin" class="planning">Modifier les RDV</a>
-    <a href="delete" class="planning">Supprimer mon profil Admin</a>
-    </div>
+    <main>
+        <div class="profil">
+            <a href="logout" class="planning">Logout</a>
+            <a href="admin/modifAdmin" class="planning">Modifier mon profil Admin</a>
+            <a href="admin/newAdmin" class="planning">Créer profil Admin</a>
+            <a href="admin/rdvAdmin" class="planning">Modifier les RDV</a>
+            <a href="delete" class="planning">Supprimer mon profil Admin</a>
+        </div>
         <% if (isLogged && praticien) { %>
-            <p>Données du praticien :</p>
-            <ul class="list">
+
+            <p><strong>Données du praticien :</strong></p>
+            <ul>
                 <li>
-                    <ul>
-                        <li>Nom : <%= praticien.Nom %></li>
-                        <li>Prenom : <%= praticien.Prenom %></li>
+                    <ul class="ulPlanning">
+                        <li>Nom : <%= praticien.Nom %>
+                        </li>
+                        <li>Prenom :<%= praticien.Prenom %>
+                        </li>
                     </ul>
                 </li>
-                <li>
-                    <p>Liste des rendez-vous :</p>
+                    <p><strong>Liste des rendez-vous :</strong></p>
+                    <li class='liPlanning'>
                     <% if (rdv.length > 0) { %>
-                        <ul>
+                        
                             <% for (const tab of rdv) { %>
-                                <li>Date et heure du RDV : <%= tab.dateTime %></li>
-                                <li>Patient : <%= tab.nom %> <%= tab.prenom %></li>
-                                <li>Tel : <%= tab.tel %></li>
+                            <ul class="ulPlanning">
+                                <li>Date et heure du RDV :
+                                    <%= tab.dateTime.replace('T', ' ') %>
+                                </li>
+                                <li>Patient :
+                                    <%= tab.nom %> <%= tab.prenom %>
+                                </li>
+                                <li>Tel : <%= tab.tel %>
+                                </li>
+                            </ul>    
+                                <% } %>
+                        
+                        <% } else { %>
+                            <p>Aucun rendez-vous disponible.</p>
                             <% } %>
-                        </ul>
-                    <% } else { %>
-                        <p>Aucun rendez-vous disponible.</p>
-                    <% } %>
                 </li>
             </ul>
-        <% } else if (isLogged && !praticien) { %>
-            <p>Le praticien est connecté, mais n'a pas de rendez-vous.</p>
-        <% } else { %>
-            <a href="/admin/rdvAdmin">Afficher les rendez-vous</a>
-        <% } %>
-        
-</main>
-<%- include('footer.ejs') %> 
+            <% } else if (isLogged && !praticien) { %>
+                <p>Le praticien est connecté, mais n'a pas de rendez-vous.</p>
+                <% } else { %>
+                    <a href="/admin/rdvAdmin">Afficher les rendez-vous</a>
+                    <% } %>
+
+    </main>
+    <%- include('footer.ejs') %>

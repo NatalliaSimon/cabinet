@@ -26,21 +26,21 @@
         <% } %>
         
          <% if (isLogged) {%>
-        <p>  Données du patient:</p>
-         <ul class ="list">
+        <h2>  Données du patient:</h2>
+         <ul class ="listPatien">
             <li>
                 <ul>
-                <li>Nom:<%= patient.nom %></li>
-                 <li>Prenom:<%= patient.prenom %></li>
+                <li>Nom: <%= patient.nom %></li>
+                 <li>Prenom: <%= patient.prenom %></li>
                 <li>Numero de téléphone:<%= patient.tel %></li>
                 </ul>
             </li>
-            <li> <p> List de rendez-vous:</p>
+            <li> <h2> List de rendez-vous:</h2>
             <ul>
             <% for(const tab of rdv) { %> 
                 
-                   <li>Date et l'heure de RDV<%= tab.dateTime %></li>
-                    <li>Praticien <%= tab.Nom %> <%= tab.Prenom %></li>
+                   <li>Date et l'heure de RDV :<%= tab.dateTime %></li>
+                    <li>Praticien :  <%= tab.Nom %> <%= tab.Prenom %></li>
                 <% } %>
                 </ul>
             </li>
