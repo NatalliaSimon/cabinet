@@ -1,3 +1,12 @@
+/*************************************************************************/
+
+/*                          Géneraux                                     */
+
+/*************************************************************************/
+
+
+/**************************** Open Dyslexic ****************************/
+
 @font-face {
     font-family: 'OpenDyslexic';
     src: url('OpenDyslexic/OpenDyslexic-Regular.eot') format("embedded-opentype"),
@@ -65,7 +74,7 @@
     --header-background: url("/13.jpg");
     --footer-background: url("/16.jpg");
     --input-color-background: var(--color-page-background);
-    --ul-planning-background-color:#C3D1DB;
+    --ul-planning-background-color: #C3D1DB;
     --color-switch: color:white;
 }
 
@@ -273,9 +282,11 @@ a:visited {
     content: 'A+';
 }
 
+
+
 /*********************************************************************/
 
-/*Header*/
+/*                           Header                                 */
 
 /*********************************************************************/
 
@@ -285,7 +296,7 @@ header {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 20%;
+    height: 10%;
     background-image: var(--header-background);
     background-size: cover;
     background-repeat: no-repeat;
@@ -303,9 +314,12 @@ header {
 }
 
 h1,
-p,
 h2 {
     text-align: center;
+}
+
+p {
+    text-align: justify;
 }
 
 h1 {
@@ -314,8 +328,8 @@ h1 {
 }
 
 h3 {
-    text-shadow: #1F4C64 1px 0 5px;
-    color: #08608c;
+    text-shadow: #fafafa 1px 0 5px;
+    color: #04252E ;
     text-align: center;
     font-size: clamp(1.25rem, 0.9659rem + 1.2121vw, 1.875rem);
 }
@@ -370,9 +384,7 @@ nav {
 }
 
 .marg:hover {
-
     transform: scale(1.3);
-
 }
 
 .menu {
@@ -394,9 +406,19 @@ nav {
     animation: slidein 2s;
 }
 
+.link-navbar:hover {
+    color: #D21F3D;
+}
+
+.accesible {
+    margin: 1%;
+    display: flex;
+    flex-direction: space-around;
+}
+
 /*********************************************************************/
 
-/*Footer*/
+/*                        Footer                                     */
 
 /*********************************************************************/
 
@@ -413,7 +435,7 @@ footer {
 
 /*********************************************************************/
 
-/*Cabinet*/
+/*                         Cabinet                                   */
 
 /*********************************************************************/
 
@@ -448,7 +470,7 @@ button {
 img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .overlay-image {
@@ -456,13 +478,13 @@ img {
     display: inline-block;
     width: 100%;
     height: auto;
-
 }
 
 .br {
     font-size: 30px;
     padding: 5%;
     border: 2px solid white;
+    text-align:center;
 }
 
 .hover-image {
@@ -481,11 +503,11 @@ img {
     flex-direction: column;
     text-align: center;
     transition: opacity 0.25s ease-in-out;
+
 }
 
 .overlay-image:hover .hover-image {
     opacity: 1;
-
 }
 
 section {
@@ -526,7 +548,7 @@ article {
 
 /*********************************************************************/
 
-/*Prendre RDV*/
+/*                       Prendre RDV                                 */
 
 /*********************************************************************/
 
@@ -535,10 +557,11 @@ form {
     flex-direction: column;
     justify-content: center;
     width: 50%;
-    margin:2%;
+    margin: 1%;
+    border-radius: 5px;
 }
 
-.btnRdv {
+.btnRdv,.login {
     width: auto;
     height: 7%;
     margin-top: 1%;
@@ -547,7 +570,7 @@ form {
 
 /*********************************************************************/
 
-/*Accés*/
+/*                           Accés                                   */
 
 /*********************************************************************/
 
@@ -570,7 +593,11 @@ form {
 
 .carte {
     margin: 5%;
-    ;
+    padding: 0;
+}
+
+iframe {
+    width: 100%;
 }
 
 /*********************************************************************/
@@ -584,12 +611,12 @@ form {
     flex-direction: row;
     justify-content: space-around;
     margin: 2%;
-    width:100%;
+    width: 100%;
 }
 
 .list-rdv {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     margin: 2%;
@@ -599,14 +626,16 @@ ul.list-rdv li {
     margin: 1%;
 
 }
-.liPlanning{
-    margin:2%;
+
+.liPlanning {
+    margin: 2%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
+
 .ulPlanning {
-    margin:2%;
+    margin: 2%;
     background-color: var(--ul-planning-background-color);
     padding: 1%;
 }
@@ -622,8 +651,9 @@ ul.list-rdv li {
 }
 
 .planning:hover {
-    background-color: #D21F3D; ;
-    color:white;
+    background-color: #D21F3D;
+    ;
+    color: white;
 }
 
 #search {
@@ -631,6 +661,13 @@ ul.list-rdv li {
     flex-direction: row;
     margin: 2%;
     justify-content: space-around;
+}
+
+.pop {
+    display: block;
+    width: 100px;
+    height: 50px;
+
 }
 
 /*********************************************************************/
@@ -674,7 +711,7 @@ ul.list-rdv li {
     .menu {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
         flex-wrap: wrap;
     }
     .bar {
@@ -722,7 +759,7 @@ ul.list-rdv li {
         display: flex;
         flex-direction: column;
     }
-   
+
 
     .info {
         margin: 1%;
@@ -732,45 +769,55 @@ ul.list-rdv li {
         flex-direction: column;
     }
     .link-navbar {
-    animation: slidein 1s;
-}
- header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 20%;
-    background-image: var(--header-background);
-    background-size: 100%;
-}
-.profil {
-    display: flex;
-    flex-direction: column;
-    margin: 2%;
-   
-}
+        animation: slidein 1s;
+    }
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 20%;
+        background-image: var(--header-background);
+        background-size: 100%;
+    }
+    .profil {
+        display: flex;
+        flex-direction: column;
+        margin: 2%;
+
+    }
 }
 
+/*********************************************************************/
+
+/*                   Version Tablette                                */
+
+/*********************************************************************/
+
 @media (min-width: 769px) and (max-width: 1024px) {
-     header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 20%;
-    background-image: var(--header-background);
-    background-size: 100%;
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 20%;
+        background-image: var(--header-background);
+        background-size: 100%;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    article,
+    .bienvenue,
+    .salle-reeduc,
+    .salle-individ {
+        display: flex;
+        flex-direction: column;
+    }
 }
-main {
-    background-image: var(--color-pages-background);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    margin: 2%;
-}
-    
-}
+ 

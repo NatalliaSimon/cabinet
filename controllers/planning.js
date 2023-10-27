@@ -4,7 +4,7 @@ export default (req, res) => {
 
     const idUser = req.session.idUser;
 
-    console.log(idUser);
+
 
     if (!idUser) {
         res.redirect('/login');
@@ -37,7 +37,6 @@ export default (req, res) => {
                 (error, results) => {
 
 
-
                     if (error) {
                         console.error(`Erreur lors de l'exécution de la requête ${error}`);
                         res.status(500).send('Erreur serveur');
@@ -45,8 +44,6 @@ export default (req, res) => {
                     }
 
                     const rdv = results;
-
-
 
 
                     res.render('planning.ejs', { rdv, praticien: praticien[0] });

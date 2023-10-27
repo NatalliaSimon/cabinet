@@ -9,16 +9,16 @@ export default (req, res) => {
 
 
     const rdv = {
-        title:xss(req.body.title),
+        title: xss(req.body.title),
         nom: xss(req.body.nom),
         prenom: xss(req.body.prenom),
         tel: xss(req.body.tel),
         idPraticien: xss(req.body.idPraticien),
         dateTime: xss(req.body.dateTime),
-        idPatient:xss( req.body.idPatient)
+        idPatient: xss(req.body.idPatient)
     };
 
-    console.log('Téléphone:', tel);
+
 
 
     database(
@@ -34,7 +34,7 @@ export default (req, res) => {
 
             const patient = results[0].id;
 
-            console.log('ID du patient:', patient);
+
 
             database(
                 'INSERT INTO RDV (id, title, nom, prenom, tel, idPraticien, dateTime, idPatient) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [newId, rdv.title, rdv.nom, rdv.prenom, rdv.tel, rdv.idPraticien, rdv.dateTime, patient, rdv.idPatient],
@@ -46,7 +46,7 @@ export default (req, res) => {
                         });
                     }
 
-                    console.log(result);
+
 
                     res.redirect('/admin/rdvAdmin');
 

@@ -33,14 +33,14 @@ export default (req, res) => {
             error: 'Erreur serveur',
           });
         }
-console.log(idUser)
+
         // Mettre à jour le patient
         database(
           
           'UPDATE Patient SET nom = ?, prenom = ?, tel = ? WHERE idUser = ?',
           [modifUser.nom, modifUser.prenom, modifUser.tel, idUser], 
           (error, results) => {
-             console.log(results)
+             
             if (error) {
               console.error(error);
               

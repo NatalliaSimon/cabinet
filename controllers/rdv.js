@@ -49,7 +49,6 @@ export default (req, res) => {
                     });
                 }
 
-                console.log(result);
                 res.redirect('/rdv' );
             }
         );

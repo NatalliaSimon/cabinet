@@ -6,11 +6,12 @@ import xss from 'xss';
 export default (req, res) => {
 
     const userLog = {
+        
         login: xss(req.body.login),
         mdp: req.body.mdp
     };
     
-//console.log(userLog)
+
 
         database('SELECT * FROM User WHERE login=? ', [userLog.login], (error, results) => {
             if (error) {
@@ -18,8 +19,7 @@ export default (req, res) => {
                 return res.status(500).send('Erreur lors de l\'exécution de la requête.');
             }
             
-           // console.log(results)
-          //  console.log(results[0])
+           
 
             if (results.length === 0) {
                 
@@ -29,7 +29,7 @@ export default (req, res) => {
 
             bcrypt.compare(userLog.mdp, results[0].mdp, (error, result) => {
                 if (error) {
-                    console.log(error);
+                   
                     res.send('Erreur serveur');
                 }
 

@@ -6,7 +6,7 @@
             <% } %>
                 <% if(!locals.message) { %>
                     <p>
-                        <%=message  %>
+                        <%=message %>
                     </p>
                     <% } %>
                         <% if (isLogged) {%>
@@ -39,8 +39,9 @@
                                         </select>
                                         <label for="dateTime"> Veuillez choisir une date et l'heure :</label >
             <input id="dateTime"  type="datetime-local"   name="dateTime" />
+            <button class="btnRdv" type="submit">Envoyer</button>
           </form>
-          <button class="btnRdv" type="submit">Envoyer</button>
+          
       <% } %>
 </main>
       

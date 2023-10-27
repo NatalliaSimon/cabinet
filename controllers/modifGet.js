@@ -17,7 +17,7 @@ export default (req, res) => {
 
         [idUser], 
         (error, results) => {
-        console.log(idUser, results)
+        
         if (error) {
             console.error(`Erreur lors de l'exécution de la requête ${error}`);
             res.status(500).send('Erreur serveur');

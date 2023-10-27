@@ -23,7 +23,7 @@ export default (req, res) => {
                 res.status(404).send(`comment faire ${idUser}.`);
                 return;
             }
-console.log(results)
+
             const praticien = {
                 nom: results[0].Nom,
                 prenom: results[0].Prenom,

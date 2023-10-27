@@ -1,52 +1,56 @@
-
-<%- include('header.ejs') %>  
+<%- include('header.ejs') %> 
 
 <main>
     <div class="profil">
-        <% if (isLogged) {%>
-         
-        
-        <a href="logout">Logout</a>
-        <a href="modif">Modifier mon profil</a>
-        <a href="delete">Supprimer mon profil</a>
-         <% } %>
+        <% if (isLogged) { %>
+            <a href="logout" class="planning">Logout</a>
+            <a href="modif" class="planning">Modifier mon profil</a>
+            <a href="delete" class="planning">Supprimer mon profil</a>
+        <% } %>
     </div>
-    
-     <% if(locals.message) { %><p> <%=message  %></p>
+
+    <% if (locals.message) { %>
+        <p><%= message %></p>
     <% } %>
+
+    <% if (!isLogged) { %>
     
-    <% if (!isLogged) {%>
         <form method="post" class="loginForm">
-            <label for="login">Votre email</label>
+            <label for="email" >Votre email</label>
             <input type="email" name="login" id="email" />
             <label for="mdp">Votre mot de passe</label>
             <input type="password" name="mdp" id="mdp" />
             <input type="submit" value="Login" class="login" />
         </form>
-        <% } %>
-        
-         <% if (isLogged) {%>
-        <h2>  Données du patient:</h2>
-         <ul class ="listPatien">
+    <% } %>
+
+    <% if (isLogged && patient) { %>
+        <h2>Données du patient:</h2>
+        <ul class="listPatient">
             <li>
                 <ul>
-                <li>Nom: <%= patient.nom %></li>
-                 <li>Prenom: <%= patient.prenom %></li>
-                <li>Numero de téléphone:<%= patient.tel %></li>
+                    <li>Nom: <%= patient.nom %></li>
+                    <li>Prenom: <%= patient.prenom %></li>
+                    <li>Numero de téléphone: <%= patient.tel %></li>
                 </ul>
             </li>
-            <li> <h2> List de rendez-vous:</h2>
-            <ul>
-            <% for(const tab of rdv) { %> 
-                
-                   <li>Date et l'heure de RDV :<%= tab.dateTime %></li>
-                    <li>Praticien :  <%= tab.Nom %> <%= tab.Prenom %></li>
+        </ul>
+        <h2>Liste de rendez-vous:</h2>
+        <ul class='liPlanning'>
+            
+            <% if (rdv.length > 0) { %>
+            
+                <% for (const tab of rdv) { %>
+                    <ul class="ulPlanning">
+                        <li>Date et l'heure de RDV : <%= tab.dateTime %></li>
+                        <li>Praticien : <%= tab.Nom %> <%= tab.Prenom %></li>
+                    </ul>
                 <% } %>
-                </ul>
-            </li>
-          </ul>
-       <% } %>
-       
-    </main>
-    
-    <%- include('footer.ejs') %>  
+            <% } else { %>
+                <p>Vous êtes connecté, mais vous n'avez pas de rendez-vous.</p>
+            <% } %>
+        </ul>
+    <% } %>
+</main>
+
+<%- include('footer.ejs') %>

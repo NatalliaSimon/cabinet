@@ -34,7 +34,7 @@ export default (req, res) => {
                     return res.status(404).send('Aucun utilisateur trouvé pour ce numéro de téléphone');
                 }
 
-                console.log(results[0]);
+                
 
 
                 const rdvs = results;

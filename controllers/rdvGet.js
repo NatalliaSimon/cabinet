@@ -15,11 +15,12 @@ export default (req, res) => {
                 return;
             }
 
-            console.log(praticiens)
 
-            res.render("rdv.ejs", { praticiens,
-                    message: 'Votre demande est enregistrée',
-                },);
+
+            res.render("rdv.ejs", {
+                praticiens,
+                message: 'Votre demande est enregistrée',
+            }, );
 
         })
 
