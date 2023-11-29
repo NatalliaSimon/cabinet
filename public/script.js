@@ -85,9 +85,7 @@ if (searchBar) {
                 `;
             resultList.appendChild(listItem);
           });
-        }
-        else {
-
+        } else {
 
           resultList.innerHTML = 'Aucun rendez-vous trouvé pour ce patient.';
         }
@@ -100,4 +98,70 @@ if (searchBar) {
 }
 
 
+/***********************************************************/
+//                 fetch delete rdv
+/***********************************************************/
+const elementsToDelete = document.querySelectorAll('[todelete]')
 
+
+if (elementsToDelete.length) {
+
+  elementsToDelete.forEach(rdv => {
+    rdv.addEventListener("click",function(e){
+      createModal(rdv)
+      toggleHTMLConfirmation(`modal-confirmation-${rdv.id}`)
+    })
+  })
+}
+ 
+
+function createModal(rdv){
+      const id = rdv.id
+      const modal = `<div class='hidden-modal' id='modal-confirmation-${id}'>
+      <p><strong>Voulez vous vraiment supprimer ce RDV ?</strong></p>
+      <button class="planning" id='confirmDelete'>Confirmer</button>
+      <button class="planning" id='AnnulerDelete'>Annuler</button>
+      </div>`
+
+      const ul = rdv.parentNode.parentNode
+      ul.innerHTML+=modal
+      
+      const btnDelete = document.querySelector("#confirmDelete")
+      const btnAnnuler = document.querySelector("#AnnulerDelete")
+      btnDelete.addEventListener("click", function(e){
+        e.preventDefault()
+        deleteRDV(id)
+        toggleHTMLConfirmation(`modal-confirmation-${id}`)
+      })
+      btnAnnuler.addEventListener("click", function(e){
+        e.preventDefault()
+        toggleHTMLConfirmation(`modal-confirmation-${id}`)
+      })
+}
+
+function toggleHTMLConfirmation(id){
+  const modal = document.querySelector(`#${id}`)
+  modal.classList.toggle('hidden-modal')
+}
+
+function deleteRDV(id){
+  const url = "/deleteRdv"
+      const option= {
+        method: "POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({idRDV:id})
+      }
+      
+      fetch(url,option)
+      .then(response => response.json())
+      .then(data => {
+        window.location.reload()
+      })
+      
+      .catch(e => {
+        console.log(e)
+      })
+      
+}

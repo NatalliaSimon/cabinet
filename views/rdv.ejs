@@ -3,46 +3,41 @@
     <main>
         <% if (!isLogged) {%>
             <h2>Merci de vous connecter ou de créer votre profil pour la prise de RENDEZ−VOUS</h2>
-            <% } %>
-                <% if(!locals.message) { %>
-                    <p>
-                        <%=message %>
-                    </p>
+        <% } %>
+        <% if(!locals.message) { %>
+            <p><%=message %></p>
+        <% } %>
+        <% if (isLogged) {%>
+
+            <form method="post">
+                <label for="title">Mme ou MR</label>
+                <select id="title" name="title" type="text" />
+                    <option value=""> --- </option>
+                    <option value="Madame">Madame</option>
+                    <option value="Monsieur">Monsieur</option>
+                </select>
+                <label for="nom">Nom</label>
+                <input id="nom" name="nom" type="text" />
+                <label for="prenom">Prenom</label>
+                <input id="prenom" name="prenom" type="text"></input>
+                <label for="tel">Telephone</label>
+                <input id="tel" name="tel" type="phone"></input>
+                <label for="idPraticen">Praticiens</label>
+                <select id="idPraticien" name="idPraticien" type="text" />
+                    <option value=""> --- </option>
+
+                    <% for(const medcin of praticiens) { %>
+
+                        <option value="<%= medcin.id %>"><%= medcin.Nom %> <%= medcin.Prenom %></option>
+
                     <% } %>
-                        <% if (isLogged) {%>
-
-                            <form method="post">
-                                <label for="title">Mme ou MR</label>
-                                <select id="title" name="title" type="text" />
-                                <option value=""> --- </option>
-                                <option value="Madame">Madame</option>
-                                <option value="Monsieur">Monsieur</option>
-                                </select>
-                                <label for="nom">Nom</label>
-                                <input id="nom" name="nom" type="text" />
-                                <label for="prenom">Prenom</label>
-                                <input id="prenom" name="prenom" type="text"></input>
-                                <label for="tel">Telephone</label>
-                                <input id="tel" name="tel" type="phone"></input>
-                                <label for="idPraticen">Praticiens</label>
-                                <select id="idPraticien" name="idPraticien" type="text" />
-                                <option value=""> --- </option>
-
-                                <% for(const medcin of praticiens) { %>
-
-                                    <option value="<%= medcin.id %>">
-                                        <%= medcin.Nom %>
-                                            <%= medcin.Prenom %>
-                                    </option>
-
-                                    <% } %>
-                                        </select>
-                                        <label for="dateTime"> Veuillez choisir une date et l'heure :</label >
-            <input id="dateTime"  type="datetime-local"   name="dateTime" />
-            <button class="btnRdv" type="submit">Envoyer</button>
-          </form>
+                </select>
+                <label for="dateTime"> Veuillez choisir une date et l'heure :</label >
+                <input id="dateTime"  type="datetime-local"   name="dateTime" />
+                <button class="btnRdv" type="submit">Envoyer</button>
+            </form>
           
-      <% } %>
-</main>
+        <% } %>
+    </main>
       
 <%- include('footer.ejs') %>

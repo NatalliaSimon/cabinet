@@ -20,11 +20,10 @@
                         </li>
                     </ul>
                 </li>
-                    <p><strong>Liste des rendez-vous :</strong></p>
-                    <li class='liPlanning'>
+                <p><strong>Liste des rendez-vous :</strong></p>
+                <li class='liPlanning'>
                     <% if (rdv.length > 0) { %>
-                        
-                            <% for (const tab of rdv) { %>
+                        <% for (const tab of rdv) { %>
                             <ul class="ulPlanning">
                                 <li>Date et heure du RDV :
                                     <%= tab.dateTime.replace('T', ' ') %>
@@ -35,18 +34,18 @@
                                 <li>Tel : <%= tab.tel %>
                                 </li>
                             </ul>    
-                                <% } %>
+                        <% } %>
                         
-                        <% } else { %>
-                            <p>Aucun rendez-vous disponible.</p>
-                            <% } %>
+                    <% } else { %>
+                        <p>Aucun rendez-vous disponible.</p>
+                    <% } %>
                 </li>
             </ul>
-            <% } else if (isLogged && !praticien) { %>
-                <p>Le praticien est connecté, mais n'a pas de rendez-vous.</p>
-                <% } else { %>
-                    <a href="/admin/rdvAdmin">Afficher les rendez-vous</a>
-                    <% } %>
+        <% } else if (isLogged && !praticien) { %>
+            <p>Le praticien est connecté, mais n'a pas de rendez-vous.</p>
+        <% } else { %>
+            <a href="/admin/rdvAdmin">Afficher les rendez-vous</a>
+        <% } %>
 
     </main>
-    <%- include('footer.ejs') %>
+<%- include('footer.ejs') %>

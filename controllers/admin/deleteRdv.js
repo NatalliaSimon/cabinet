@@ -2,7 +2,7 @@ import database from '../../database.js';
 
 export default (req, res) => {
 
-  const { idRDV } = req.params;
+  const { idRDV } = req.body;
 
   database(
 
@@ -39,7 +39,7 @@ export default (req, res) => {
 
 
 
-          res.redirect('/admin/rdvAdmin');
+          res.json({results});
         });
 
     })

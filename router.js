@@ -63,7 +63,7 @@ router.get('/admin/newAdmin',newAdminGet);
 router.post('/admin/newAdmin',newAdmin);
 router.get('/admin/rdvAdmin',rdvAdminGet);
 router.post('/admin/rdvAdmin',rdvAdmin);
-router.get('/deleteRdv/:idRDV',checkAuthentication, deleteRdv); 
+router.post('/deleteRdv',checkAuthentication, deleteRdv); 
 router.get('/rdvAdmin',search);
 
 

@@ -4,7 +4,6 @@
 
 /*************************************************************************/
 
-
 /**************************** Open Dyslexic ****************************/
 
 @font-face {
@@ -55,7 +54,7 @@
     --color-page-background: #FFF;
     --color-text: #000;
     --color-border: #CCC;
-    --button-color-background: #fff;
+    --button-color-background:#fff;
     --button-color-text: var(--color-text);
     --button-color-border: var(--button-color-text);
     --link-color: #000;
@@ -65,7 +64,6 @@
     --panel-color-border: var(--button-color-border);
     --font-family: ' EB Garamond', serif;
     --font-family-code: monospace, monospace;
-    ;
     --font-size: 1em;
     --line-height: 2em;
     --border-radius: 0.25em;
@@ -150,6 +148,8 @@ select {
     font-family: var(--font-family);
     font-size: var(--font-size);
     line-height: var(--line-height);
+    padding:1%;
+    
 }
 
 input[type] {
@@ -300,15 +300,19 @@ header {
     background-image: var(--header-background);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position:center;
 
 }
 
 .symbol {
-    width: 100%;
+    width: 50%;
     height: auto;
 }
 
 .logo {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     width: 40%;
     height: auto;
 }
@@ -329,7 +333,7 @@ h1 {
 
 h3 {
     text-shadow: #fafafa 1px 0 5px;
-    color: #04252E ;
+    color: #04252E;
     text-align: center;
     font-size: clamp(1.25rem, 0.9659rem + 1.2121vw, 1.875rem);
 }
@@ -470,7 +474,7 @@ button {
 img {
     width: 100%;
     height: auto;
-    object-fit: fill;
+    object-fit: cover;
 }
 
 .overlay-image {
@@ -484,7 +488,7 @@ img {
     font-size: 30px;
     padding: 5%;
     border: 2px solid white;
-    text-align:center;
+    text-align: center;
 }
 
 .hover-image {
@@ -510,12 +514,19 @@ img {
     opacity: 1;
 }
 
-section {
+.bienvenue,
+.salle-reeduc,
+.salle-individ {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+}
 article {
     width: 100%;
 }
@@ -548,6 +559,16 @@ article {
 
 /*********************************************************************/
 
+/*                       Modal                                       */
+
+/*********************************************************************/
+.hidden-modal {
+    display:none;
+}
+
+
+/*********************************************************************/
+
 /*                       Prendre RDV                                 */
 
 /*********************************************************************/
@@ -559,9 +580,11 @@ form {
     width: 50%;
     margin: 1%;
     border-radius: 5px;
+    
 }
 
-.btnRdv,.login {
+.btnRdv,
+.login {
     width: auto;
     height: 7%;
     margin-top: 1%;
@@ -580,6 +603,7 @@ form {
     align-items: center;
     text-align: center;
     margin-left: 10%;
+    margin-top:1%;
 }
 
 .infoPratique {
@@ -820,4 +844,3 @@ ul.list-rdv li {
         flex-direction: column;
     }
 }
- 
