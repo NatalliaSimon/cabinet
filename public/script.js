@@ -153,7 +153,7 @@ function deleteRDV(id){
         },
         body:JSON.stringify({idRDV:id})
       }
-      
+     
       fetch(url,option)
       .then(response => response.json())
       .then(data => {

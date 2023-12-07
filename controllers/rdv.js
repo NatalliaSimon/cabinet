@@ -19,10 +19,10 @@ export default (req, res) => {
         }
 
         if (results.length === 0) {
-            return res.status(404).send('Aucun utilisateur trouvé pour ce numéro de téléphone');
+            return res.send("Les coordonnées sont invalides")
         }
 
-        console.log(results[0])
+        //console.log(results[0])
 
         const rdv = {
             title: xss(req.body.title),

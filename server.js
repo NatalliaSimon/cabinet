@@ -14,7 +14,7 @@ const app = express();
 
 
 //pour récupérer les informations du formulaire
-app.use(express.json()) // for parsing application/json
+app.use(express.json()) 
 app.use(express.urlencoded({ extended: true })) 
 app.use(express.static('public'));
 

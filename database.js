@@ -26,7 +26,7 @@ export default (queryString, params, callback) => {
         }
         console.log('Connection réussie à la base de données');
 
-console.log(queryString, params)
+//console.log(queryString, params)
 
         // Envoi de la requête à la BDD
         connection.query(

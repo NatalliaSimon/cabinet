@@ -1,6 +1,7 @@
 <%- include('header.ejs') %>
 
     <main>
+       
         <% if (!isLogged) {%>
             <h2>Merci de vous connecter ou de créer votre profil pour la prise de RENDEZ−VOUS</h2>
         <% } %>
@@ -8,7 +9,9 @@
             <p><%=message %></p>
         <% } %>
         <% if (isLogged) {%>
-
+        
+          <h2>Merci de remplir le formulaire pour la prise de rendez-vous</h2>
+          
             <form method="post">
                 <label for="title">Mme ou MR</label>
                 <select id="title" name="title" type="text" />

@@ -2,7 +2,7 @@ import database from '../../database.js';
 
 export default (req, res) => {
 
-  const { idRDV } = req.body;
+  const  idRDV  = req.body.idRDV || req.params.id;
 
   database(
 
@@ -37,9 +37,12 @@ export default (req, res) => {
             return;
           }
 
+          if(req.body.idRDV){
 
-
-          res.json({results});
+          res.json({results});}
+          else{ 
+            res.send("Rendez-vous est supprimé")
+          }
         });
 
     })

@@ -20,6 +20,7 @@ import rdvAdmin from './controllers/admin/rdvAdmin.js';
 import rdvAdminGet from './controllers/admin/rdvAdminGet.js';
 import deleteRdv from './controllers/admin/deleteRdv.js';
 import search from './controllers/admin/search.js';
+import notfound from './controllers/notfound.js';
 
 const router = express.Router();
 
@@ -65,7 +66,8 @@ router.get('/admin/rdvAdmin',rdvAdminGet);
 router.post('/admin/rdvAdmin',rdvAdmin);
 router.post('/deleteRdv',checkAuthentication, deleteRdv); 
 router.get('/rdvAdmin',search);
-
+router.get('/deleteRdv/:id',checkAuthentication, deleteRdv); 
+router.use(notfound);
 
 
 

@@ -37,7 +37,7 @@ export default (req, res) => {
 
           'UPDATE Praticien SET Nom = ?, Prenom = ?  WHERE idUser = ?', [modifUser.nom, modifUser.prenom, idUser],
           (error, results) => {
-            console.log(results)
+            
             if (error) {
               console.error(error);
 
